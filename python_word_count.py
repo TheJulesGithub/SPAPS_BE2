@@ -7,7 +7,7 @@ from collections import Counter
 start_computing = time()
 
 # 1/ Read file
-with open("SPAPS_BE_2/data/text.txt") as f:
+with open("SPAPS_BE2/data/text.txt") as f:
     data = f.read()
 
 # 2/ Count words

@@ -12,7 +12,7 @@ apt-get install python3-pip -y
 
 echo "2/ Generate datasets:"
 echo "---------------------------"
-cd SPAPS_BE_2/utils
+cd SPAPS_BE2/utils
 
 echo 'Generate text file'
 python3 random_word_generator.py

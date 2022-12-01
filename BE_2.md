@@ -126,8 +126,8 @@ docker run -itd -p 8041:8042 --net=hadoop --name hadoop-slave2 --hostname hadoop
 ```
 If not working, try another port.
 
-4. Transfert content of `SPAPS_BE_2` on the master-hadoop docker:
- `docker cp SPAPS_BE_2/. hadoop-master:/root/SPAPS_BE_2/` 
+4. Transfert content of `SPAPS_BE2` on the master-hadoop docker:
+ `docker cp SPAPS_BE2/. hadoop-master:/root/SPAPS_BE2/` 
 
 5. Open master container
 `docker exec -it hadoop-master bash`
@@ -143,7 +143,7 @@ NB: You can type `exit` (or Ctrl-D) to exit.
 *NB:* You can now open a borwser and go to `http://localhost:8088/cluster` to get Hadoop user interface. 
 
 7. You will generate useful dataset with python dedicated scripts:
-`source ./SPAPS_BE_2/generate_data_and_set_env.sh`
+`source ./SPAPS_BE2/generate_data_and_set_env.sh`
 
 Wait a moment, if everything is Ok, your env is now ready to use !
 
@@ -158,14 +158,15 @@ In this exercise, we will compare Spark and Python computing time.
 
 Go back to your 
 
-1. Display content of script `SPAPS_BE_2/python_word_count.py`:
-`cat SPAPS_BE_2/python_word_count.py` 
+1. Display content of script `SPAPS_BE2/python_word_count.py`:
+`cat SPAPS_BE2/python_word_count.py` 
 
+You can also display it on github.
 It contains a script to count word occurence with pure python code (optimized).
 
 2. Run it (computation shall take a moment - ~15 minutes, you can go to break or make the next section first 
 if you don't want to wait):
-`python3 SPAPS_BE_2/python_word_count.py`
+`python3 SPAPS_BE2/python_word_count.py`
 
 Note the computing time. 
 
@@ -177,8 +178,13 @@ export PYSPARK_PYTHON=python3
 export PYSPARK_DRIVER_PYTHON=python3
 ```
 
+*NB*: These commands fix the error "python no such file or directory"
+
 2. Put file on Hadoop:
-`hadoop fs -put data/text.txt`
+* Create an arborescence:
+`hadoop fs -mkdir -p /user/root`
+
+* Put file on hadoop: `hadoop fs -put SPAPS_BE2/data/text.txt`
 
 This file will be available on the cluster. When you will  require a file reading, `Pyspark` will search inside hadoop.
 
@@ -226,10 +232,10 @@ Note the computing time.
 
 1. Previous pyspark commands can be run in script mode: display content of this script:
 
-`cat SPAPS_BE_2/pyspark_word_count.py`
+`cat SPAPS_BE2/pyspark_word_count.py`
 
 2. Launch it via spark-submit (local mode):
-`spark-submit --master local --driver-memory 4g --executor-memory 2g --executor-cores 1 SPAPS_BE_2/pyspark_word_count.py`
+`spark-submit --master local --driver-memory 4g --executor-memory 2g --executor-cores 1 SPAPS_BE2/pyspark_word_count.py`
 
 In this command:
 * `master`: corresponds to the master URL (here `local` means 
@@ -243,7 +249,7 @@ In this command:
 Note the computing time.
 
 3. Finally, launch it in cluster mode:
-`spark-submit --master yarn --deploy-mode cluster --driver-memory 4g --executor-memory 2g --executor-cores 1 SPAPS_BE_2/pyspark_word_count.py`
+`spark-submit --master yarn --deploy-mode cluster --driver-memory 4g --executor-memory 2g --executor-cores 1 SPAPS_BE2/pyspark_word_count.py`
 
 It permits to distribute computation between 2 nodes.
 
@@ -263,7 +269,21 @@ You can see that, when manipulating medium files (~700 Mo):
 * Pyspark (local mode) can handle this volumetry
 * Pyspark (cluster distributed mode) can this volumetry in a reasonable computing time.
 
-## 3/ Clean your env
+## 3/ Exercice 3: manipulate `DataFrames` (if enough time)
+
+In this execrice, we will manipulate `DataFrames` and `Windows`
+
+1. Display content of file `SPAPS_BE2/data/employe.csv` file :
+`cat SPAPS_BE2/data/employe.csv`
+
+
+2. Put `SPAPS_BE2/data/employe.csv` file on HDFS:
+`hadoop fs -put SPAPS_BE2/data/employe.csv`
+
+
+
+
+## 4/ Clean your env
 
 1. Close all the command prompt
 
