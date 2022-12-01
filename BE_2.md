@@ -20,14 +20,25 @@ Action performed on this exercise: Install a representative environment to run S
 
 This exercise focuses on a) b) c) d) and e)
 
-### 1.1/ Install docker
+### 1.1/ Retrieve code
+
+Keep prompt open.
+
+1. Go on <https://github.com/TheJulesGithub/SPAPS_BE2> and download package.
+
+![download](img/download_BE.png)
+
+2. UnZip it
+
+
+### 1.2/ Install docker
 
 Docker permits to run reproducible environments with everything installed on it. 
 
 NB: You can find  [here](https://docs.docker.com/engine/install/) installation tutorials for each OS supported by docker 
 (CentOS, Ubuntu, Windows, ...)
 
-#### 1.1.1/ Enable `WSL-2`
+#### 1.2.1/ Enable `WSL-2`
 
 You need first to install `WSL-2` to enable docker. This tool permits to run linux command (in fact a linux kernel)
 on your windows OS.
@@ -62,13 +73,13 @@ Where `<Distribution>` is a Linux available distribution (e.g. `Ubuntu`).
 
 *NB*: You can find [here](https://learn.microsoft.com/fr-fr/windows/wsl/install) a tutorial for WSL-2 install.
 
-#### 1.1.2/ Install `Docker`
+#### 1.2.2/ Install `Docker`
 
 Install Docker Desktop for windows from the [docker website](https://docs.docker.com/desktop/install/windows-install/).
 
 Docker is now running !
 
-#### 1.1.3/ Enable visualisation 
+#### 1.2.3/ Enable visualisation 
 
 You have to enable visualisation (usage of docker). It is done via the BIOS settings.
 
@@ -79,8 +90,10 @@ You have to enable visualisation (usage of docker). It is done via the BIOS sett
     * go to advanced
     * cpa configuration
     * enable visualisation
+    
+ ![virtualisation](img/virtualization.jpg)
 
-#### 1.1.4/ Check installation
+#### 1.2.4/ Check installation
 
 1. Open `Docker Desktop` as administrator. 
 
@@ -89,7 +102,7 @@ If something go wrong with Docker Desktop: troubleshoot > Reset to factory defau
 If everything is OK, your docker is now installed !
 
 
-### 1.2/ Install an Hadoop cluster
+### 1.3/ Install an Hadoop cluster
 Hadoop will permit you to run computations in distributed mode (with one master and 2 workers).
 
 1. Download docker image : Open a windows powerShell as administrator and type:
@@ -140,14 +153,18 @@ You can take a break during the installs.
 
 In this exercise, we will compare Spark and Python computing time.
 
-### 2.1/ Test word count with regular python script
+
+### 2.1/ Test word count with regular python script (15 minute wait !)
+
+Go back to your 
 
 1. Display content of script `SPAPS_BE_2/python_word_count.py`:
 `cat SPAPS_BE_2/python_word_count.py` 
 
 It contains a script to count word occurence with pure python code (optimized).
 
-2. Run it (computation shall take a moment - 2 or 3 minutes):
+2. Run it (computation shall take a moment - ~15 minutes, you can go to break or make the next section first 
+if you don't want to wait):
 `python3 SPAPS_BE_2/python_word_count.py`
 
 Note the computing time. 
