@@ -269,19 +269,7 @@ You can see that, when manipulating medium files (~700 Mo):
 * Pyspark (local mode) can handle this volumetry
 * Pyspark (cluster distributed mode) can this volumetry in a reasonable computing time.
 
-## 3/ Exercice 3: manipulate `DataFrames` (if enough time)
-
-In this execrice, we will manipulate `DataFrames` and `Windows`
-
-1. Display content of file `SPAPS_BE2/data/employe.csv` file :
-`cat SPAPS_BE2/data/employe.csv`
-
-
-2. Put `SPAPS_BE2/data/employe.csv` file on HDFS:
-`hadoop fs -put SPAPS_BE2/data/employe.csv`
-
-
-
+If you have enough time, you can test command from previous BE (can be found here: <https://github.com/TheJulesGithub/binder_pyspark/blob/main/python/BE1_answer.ipynb>)
 
 ## 4/ Clean your env
 
