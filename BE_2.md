@@ -91,7 +91,7 @@ You have to enable visualisation (usage of docker). It is done via the BIOS sett
     * cpa configuration
     * enable visualisation
     
- ![virtualisation](img/virtualization.jpg)
+ ![virtualisation](img/virtualization.png)
 
 #### 1.2.4/ Check installation
 
